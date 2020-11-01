@@ -2,14 +2,20 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
+const index = require('./routes/index');
+const user = require('./routes/user');
+
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-  res.send('Hello');
+app.use('/', index);
+app.use('/users', user);
+
+app.all('*', (req, res) => {
+  res.send('404, page not found!');
 });
 
 const port = 5000;
