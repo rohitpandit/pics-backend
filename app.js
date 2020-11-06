@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 
 const index = require('./routes/index');
 const user = require('./routes/user');
+require('./database/connection');
 
 const app = express();
 
